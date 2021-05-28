@@ -4,29 +4,40 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.study</groupId>
-        <artifactId>common-service</artifactId>
+        <artifactId>base-service</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <groupId>com.study</groupId>
-    <artifactId>basis-service</artifactId>
+    <artifactId>gateway-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>basis-service</name>
-    <description>基础服务，短信，邮件，文件上传等</description>
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
+    <name>gateway-service</name>
+    <description>网关服务</description>
+
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-mail</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <!--nacos-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
         </dependency>
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-client</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.study</groupId>
-            <artifactId>web-common-part</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -35,19 +46,12 @@
         </dependency>
     </dependencies>
 
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
             </plugin>
         </plugins>
     </build>

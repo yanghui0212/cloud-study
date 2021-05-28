@@ -6,7 +6,6 @@
         <groupId>com.study</groupId>
         <artifactId>cloud-study</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath/>
     </parent>
     <groupId>com.study</groupId>
     <artifactId>common-service</artifactId>
@@ -16,7 +15,7 @@
     <description>通用服务</description>
 
     <modules>
-
+        <module>basis-service</module>
     </modules>
 
 </project>

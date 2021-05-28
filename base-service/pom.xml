@@ -6,7 +6,6 @@
         <groupId>com.study</groupId>
         <artifactId>cloud-study</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath/>
     </parent>
     <groupId>com.study</groupId>
     <artifactId>base-service</artifactId>

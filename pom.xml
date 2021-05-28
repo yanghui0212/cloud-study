@@ -19,6 +19,7 @@
         <spring-boot-admin.version>2.3.1</spring-boot-admin.version>
         <spring-cloud.version>Hoxton.SR11</spring-cloud.version>
         <spring-cloud-alibaba-dependencies.version>2.2.5.RELEASE</spring-cloud-alibaba-dependencies.version>
+        <joda-time.version>2.10</joda-time.version>
     </properties>
 
     <modules>
@@ -49,6 +50,23 @@
                 <version>${spring-cloud-alibaba-dependencies.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba-dependencies.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${joda-time.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.study</groupId>
+                <artifactId>web-common-part</artifactId>
+                <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

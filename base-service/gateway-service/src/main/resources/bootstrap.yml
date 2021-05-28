@@ -1,8 +1,9 @@
 server:
-  port: 7777
+  port: 5000
+
 spring:
   application:
-    name: basis-service
+    name: gateway-service
   cloud:
     nacos:
       config:
@@ -18,6 +19,7 @@ spring:
         password: nacos
         username: nacos
         group: study
+
 logging:
   level:
     com: TRACE
@@ -34,3 +36,4 @@ management:
   endpoint:
     health:
       show-details: always
+
