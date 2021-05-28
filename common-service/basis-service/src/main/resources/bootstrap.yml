@@ -1,0 +1,40 @@
+server:
+  port: 7777
+spring:
+  application:
+    name: basis-service
+  security:
+    user:
+      name: admin
+      password: admin
+  cloud:
+    nacos:
+      config:
+        file-extension: yml
+        server-addr: 127.0.0.1:8848
+        group: study
+        namespace: study
+        username: nacos
+        password: nacos
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: study
+        password: nacos
+        username: nacos
+        group: study
+logging:
+  level:
+    com: TRACE
+    com.alibaba.nacos: warn
+  file:
+    name: d:/logs/${spring.application.name}.log
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
