@@ -16,22 +16,24 @@ public class UrlRedirectFilter extends ZuulFilter {
 
 
     /**
-     *  重定向的规则,根据key来重定向到val.
+     * 重定向的规则,根据key来重定向到val.
      */
-    private static Map<String, String>urlMap=new HashMap<>();
+    private static Map<String, String> urlMap = new HashMap<>();
+
     static {
         urlMap.put("cargo", "http://www.baidu.com");
     }
+
     @Override
     public Object run() {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
         String url = request.getRequestURI(); // 列子 [/user/login/loginWx]
-        String[] split = url.split("/", 3);	// 这里切割一下,好让下面判断是否是需要修改url的.
-        if (split.length>=2) {
+        String[] split = url.split("/", 3);    // 这里切割一下,好让下面判断是否是需要修改url的.
+        if (split.length >= 2) {
             String val = urlMap.get(split[1]);
             if (StringUtils.isNotEmpty(val)) {
-                url=url.replaceFirst("/"+split[1]+"/", val);// 根据配置好的去将url替换掉,这里可以写自己的转换url的规则
+                url = url.replaceFirst("/" + split[1] + "/", val);// 根据配置好的去将url替换掉,这里可以写自己的转换url的规则
                 ctx.put("requestURI", url); // 将替换掉的url set进去,在对应的转发请求的url就会使用这个url
             }
         }

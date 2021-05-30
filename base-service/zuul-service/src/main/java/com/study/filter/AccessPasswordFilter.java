@@ -15,12 +15,12 @@ public class AccessPasswordFilter extends ZuulFilter {
         System.out.println(String.format("%s AccessPasswordFilter request to %s", request.getMethod(), request.getRequestURL().toString()));
 
         String username = request.getParameter("password");
-        if(null != username && username.equals("import com.common.context.SessionContext;")) {
+        if (null != username && username.equals("import com.common.context.SessionContext;")) {
             ctx.setSendZuulResponse(true);
             ctx.setResponseStatusCode(200);
             ctx.set("isOk", true);
             return null;
-        }else{
+        } else {
             ctx.setSendZuulResponse(false);
             ctx.setResponseStatusCode(401);
             ctx.setResponseBody("{\"result\":\"password is not correct!\"}");

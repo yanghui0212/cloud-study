@@ -25,7 +25,7 @@ public class CustomRouteLocator extends SimpleRouteLocator implements Refreshabl
     public CustomRouteLocator(String servletPath, ZuulProperties properties) {
         super(servletPath, properties);
         this.properties = properties;
-        logger.info("servletPath:{}",servletPath);
+        logger.info("servletPath:{}", servletPath);
     }
 
     //父类已经提供了这个方法，这里写出来只是为了说明这一个方法很重要！！！
@@ -66,7 +66,7 @@ public class CustomRouteLocator extends SimpleRouteLocator implements Refreshabl
         return values;
     }
 
-    private Map<String, ZuulRoute> locateRoutesFromService(){
+    private Map<String, ZuulRoute> locateRoutesFromService() {
         Map<String, ZuulRoute> routes = new LinkedHashMap<>();
         List<ZuulRouteVO> listZuulRoute = new ArrayList<ZuulRouteVO>();
 
@@ -86,16 +86,16 @@ public class CustomRouteLocator extends SimpleRouteLocator implements Refreshabl
 
         List<ZuulRouteVO> results = listZuulRoute;
         for (ZuulRouteVO result : results) {
-            if(org.apache.commons.lang3.StringUtils.isBlank(result.getPath()) || org.apache.commons.lang3.StringUtils.isBlank(result.getUrl()) ){
+            if (org.apache.commons.lang3.StringUtils.isBlank(result.getPath()) || org.apache.commons.lang3.StringUtils.isBlank(result.getUrl())) {
                 continue;
             }
             ZuulRoute zuulRoute = new ZuulRoute();
             try {
-                org.springframework.beans.BeanUtils.copyProperties(result,zuulRoute);
+                org.springframework.beans.BeanUtils.copyProperties(result, zuulRoute);
             } catch (Exception e) {
-                logger.error("=============load zuul route info from db with error==============",e);
+                logger.error("=============load zuul route info from db with error==============", e);
             }
-            routes.put(zuulRoute.getPath(),zuulRoute);
+            routes.put(zuulRoute.getPath(), zuulRoute);
         }
         return routes;
     }

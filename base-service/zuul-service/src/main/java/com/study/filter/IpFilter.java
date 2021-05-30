@@ -15,7 +15,7 @@ public class IpFilter extends ZuulFilter {
     @Value("${firewall.enabled}")
     private boolean firewallEnabled = true;
 
-    Logger logger= LoggerFactory.getLogger(getClass());
+    Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
     public String filterType() {
@@ -37,22 +37,22 @@ public class IpFilter extends ZuulFilter {
         if (!firewallEnabled)
             return null;
 
-        RequestContext ctx= RequestContext.getCurrentContext();
-        HttpServletRequest req=ctx.getRequest();
-        String ipAddr=this.getIpAddr(req);
-        logger.info("请求IP地址为：[{}]",ipAddr);
+        RequestContext ctx = RequestContext.getCurrentContext();
+        HttpServletRequest req = ctx.getRequest();
+        String ipAddr = this.getIpAddr(req);
+        logger.info("请求IP地址为：[{}]", ipAddr);
 
         //配置本地IP黑名单，生产环境可放入数据库或者redis中
         List<String> denyList = getDenyList();
-        if (denyList.contains("*")){
+        if (denyList.contains("*")) {
             //配置本地IP白名单，生产环境可放入数据库或者redis中
             List<String> allowList = getAllowList();
-            if(allowList.contains(ipAddr)){
+            if (allowList.contains(ipAddr)) {
                 return null;
             }
         }
-        if(denyList.contains(ipAddr)){
-            logger.info("黑名单:"+ipAddr+" IP地址校验不通过！！！");
+        if (denyList.contains(ipAddr)) {
+            logger.info("黑名单:" + ipAddr + " IP地址校验不通过！！！");
             ctx.setResponseStatusCode(401);
             ctx.setSendZuulResponse(false);
             ctx.setResponseBody("IpAddr is forbidden!");
@@ -71,9 +71,10 @@ public class IpFilter extends ZuulFilter {
 
     /**
      * 获取白名单列表
+     *
      * @return
      */
-    public List<String> getAllowList(){
+    public List<String> getAllowList() {
         List<String> list = new ArrayList<String>();
         list.add("127.0.0.1");
         return list;
@@ -81,9 +82,10 @@ public class IpFilter extends ZuulFilter {
 
     /**
      * 获取黑名单列表
+     *
      * @return
      */
-    public List<String> getDenyList(){
+    public List<String> getDenyList() {
         List<String> list = new ArrayList<String>();
         list.add("127.0.0.1");
         return list;
@@ -91,10 +93,11 @@ public class IpFilter extends ZuulFilter {
 
     /**
      * 获取Ip地址
+     *
      * @param request
      * @return
      */
-    public  String getIpAddr(HttpServletRequest request){
+    public String getIpAddr(HttpServletRequest request) {
 
         String ip = request.getHeader("X-Forwarded-For");
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 //@Component 自动生效
 public class MyFilter extends ZuulFilter {
 
-    private static final Logger log= LoggerFactory.getLogger(MyFilter.class);
+    private static final Logger log = LoggerFactory.getLogger(MyFilter.class);
 
     @Override
     public String filterType() {
@@ -36,7 +36,7 @@ public class MyFilter extends ZuulFilter {
         HttpServletRequest request = ctx.getRequest();
         String token = request.getParameter("token");
         //System.out.println(token);
-        if(token==null){
+        if (token == null) {
             log.warn("token is empty");
             /*ctx.setSendZuulResponse(false);
             ctx.setResponseStatusCode(401);

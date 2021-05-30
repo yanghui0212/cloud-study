@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 
 //@Component
 public class AccessTokenFilter extends ZuulFilter {
-    private static final Logger logger= LoggerFactory.getLogger(MyFilter.class);
+    private static final Logger logger = LoggerFactory.getLogger(MyFilter.class);
+
     @Override
     public Object run() {
         RequestContext ctx = RequestContext.getCurrentContext();

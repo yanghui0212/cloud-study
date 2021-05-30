@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: gateway-service
+    name: zuul-service
   cloud:
     nacos:
       config:
@@ -19,7 +19,8 @@ spring:
         password: nacos
         username: nacos
         group: study
-
+    inetutils:
+      ignored-interfaces[0]: 'VMware[\s\S]*'
 logging:
   level:
     com: TRACE

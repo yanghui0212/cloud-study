@@ -6,12 +6,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class FilterConfig {
 
-	@Bean
-	public AccessTokenFilter accessTokenFilter() {
-		return new AccessTokenFilter();
-	}
+    @Bean
+    public AccessTokenFilter accessTokenFilter() {
+        return new AccessTokenFilter();
+    }
 
-//    @Bean
+    //    @Bean
     public IpFilter ipFilter() {
         return new IpFilter();
     }
