@@ -70,20 +70,6 @@ public class CustomRouteLocator extends SimpleRouteLocator implements Refreshabl
         Map<String, ZuulRoute> routes = new LinkedHashMap<>();
         List<ZuulRouteVO> listZuulRoute = new ArrayList<ZuulRouteVO>();
 
-        //Direct Route************
-        ZuulRouteVO zuulRouteVO1 = new ZuulRouteVO();
-        zuulRouteVO1.setId("1");
-        zuulRouteVO1.setPath("/abc/**");
-        zuulRouteVO1.setUrl("http://www.baidu.com");
-
-        ZuulRouteVO zuulRouteVO2 = new ZuulRouteVO();
-        zuulRouteVO2.setId("2");
-        zuulRouteVO2.setPath("/cargo/**");
-        zuulRouteVO2.setUrl("http://localhost:8090");
-
-        listZuulRoute.add(zuulRouteVO1);
-        listZuulRoute.add(zuulRouteVO2);
-
         List<ZuulRouteVO> results = listZuulRoute;
         for (ZuulRouteVO result : results) {
             if (org.apache.commons.lang3.StringUtils.isBlank(result.getPath()) || org.apache.commons.lang3.StringUtils.isBlank(result.getUrl())) {

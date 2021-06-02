@@ -24,8 +24,8 @@
 
     <modules>
         <module>base-service</module>
-        <module>common-service</module>
         <module>common</module>
+        <module>work-service</module>
     </modules>
 
     <dependencyManagement>

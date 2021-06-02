@@ -17,6 +17,7 @@
     <modules>
         <module>admin-service</module>
         <module>zuul-service</module>
+        <module>gateway-service</module>
     </modules>
 
 </project>
